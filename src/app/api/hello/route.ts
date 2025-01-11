@@ -13,8 +13,15 @@ export async function GET() {
   // KV Example:
 
   const myKv = getRequestContext().env.MY_KV_NAMESPACE
-  await myKv.put('suffix', ' from a KV store!')
-  const suffix = await myKv.get('suffix')
+
+  let suffix: string | null = ""
+
+  try {
+    suffix = await myKv.get("suffix")
+  } catch (error) {
+    console.error(error)
+  }
+
   return new Response(responseText + suffix)
 
 }
