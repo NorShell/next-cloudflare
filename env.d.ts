@@ -2,4 +2,5 @@
 
 interface CloudflareEnv {
 	MY_KV_NAMESPACE: KVNamespace;
+	DB: D1Database;
 }
